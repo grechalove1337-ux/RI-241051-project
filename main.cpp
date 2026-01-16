@@ -12,27 +12,35 @@ int main() {
     std::string inputFile = "input.txt";
     std::string outputFile = "output.txt";
 
-    // Для тестирования создадим тестовые данные
-    std::vector<std::string> lines;
-    lines.push_back("Тестовая строка 1");
-    lines.push_back("Тестовая строка 2");
-    lines.push_back("Тестовая строка 3");
-    
-    // В финальной версии будет:
-    // std::vector<std::string> lines = readFromFile(inputFile);
-    
+    std::vector<std::string> lines = readFromFile(inputFile);
     printToScreen(lines);
     writeToFile(lines, outputFile);
 
     return 0;
 }
 
+// ФУНКЦИЯ ЧТЕНИЯ (U1)
 std::vector<std::string> readFromFile(const std::string& filename) {
     std::vector<std::string> lines;
-    return lines; // Заглушка
+    std::ifstream file(filename);
+
+    if (!file.is_open()) {
+        std::cerr << "Ошибка открытия файла: " << filename << std::endl;
+        return lines;
+    }
+
+    std::string line;
+    while (std::getline(file, line)) {
+        if (!line.empty()) {
+            lines.push_back(line);
+        }
+    }
+
+    file.close();
+    return lines;
 }
 
-// ФУНКЦИИ ВЫВОДА И ЗАПИСИ (U2) - ГОТОВЫЕ ВЕРСИИ
+// ФУНКЦИИ ВЫВОДА И ЗАПИСИ (U2)
 void printToScreen(const std::vector<std::string>& lines) {
     if (lines.empty()) {
         std::cout << "Вектор пуст." << std::endl;
@@ -61,4 +69,3 @@ void writeToFile(const std::vector<std::string>& lines, const std::string& filen
     file.close();
     std::cout << "Данные записаны в " << filename << std::endl;
 }
-// Всего строк: 
