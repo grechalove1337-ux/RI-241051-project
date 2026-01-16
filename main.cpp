@@ -39,7 +39,7 @@ void printToScreen(const std::vector<std::string>& lines) {
         return;
     }
     
-    std::cout << "=== СОДЕРЖИМОЕ ===" << std::endl;
+    std::cout << "=== ВЫВОД НА ЭКРАН ===" << std::endl;
     for (size_t i = 0; i < lines.size(); i++) {
         std::cout << i + 1 << ". " << lines[i] << std::endl;
     }
