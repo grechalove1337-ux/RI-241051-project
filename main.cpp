@@ -61,3 +61,4 @@ void writeToFile(const std::vector<std::string>& lines, const std::string& filen
     file.close();
     std::cout << "Данные записаны в " << filename << std::endl;
 }
+// Всего строк: 
