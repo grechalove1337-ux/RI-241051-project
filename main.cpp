@@ -12,7 +12,6 @@ int main() {
     std::string inputFile = "input.txt";
     std::string outputFile = "output.txt";
 
-    // Каркас программы
     std::vector<std::string> lines = readFromFile(inputFile);
     printToScreen(lines);
     writeToFile(lines, outputFile);
@@ -20,7 +19,7 @@ int main() {
     return 0;
 }
 
-// ФУНКЦИЯ ЧТЕНИЯ (U1) - ГОТОВАЯ ВЕРСИЯ
+// ФУНКЦИЯ ЧТЕНИЯ (U1)
 std::vector<std::string> readFromFile(const std::string& filename) {
     std::vector<std::string> lines;
     std::ifstream file(filename);
@@ -38,14 +37,35 @@ std::vector<std::string> readFromFile(const std::string& filename) {
     }
 
     file.close();
-    return lines; // Возвращаем результат без отладочного вывода
+    return lines;
 }
 
+// ФУНКЦИИ ВЫВОДА И ЗАПИСИ (U2)
 void printToScreen(const std::vector<std::string>& lines) {
-    // Заглушка
+    if (lines.empty()) {
+        std::cout << "Вектор пуст." << std::endl;
+        return;
+    }
+    
+    std::cout << "=== ВЫВОД НА ЭКРАН ===" << std::endl;
+    for (size_t i = 0; i < lines.size(); i++) {
+        std::cout << i + 1 << ". " << lines[i] << std::endl;
+    }
+    std::cout << "==================" << std::endl;
 }
 
 void writeToFile(const std::vector<std::string>& lines, const std::string& filename) {
-    // Заглушка
+    std::ofstream file(filename);
+    
+    if (!file.is_open()) {
+        std::cerr << "Ошибка создания файла: " << filename << std::endl;
+        return;
+    }
+    
+    for (const auto& line : lines) {
+        file << line << std::endl;
+    }
+    
+    file.close();
+    std::cout << "Данные записаны в " << filename << std::endl;
 }
-// Функция readFromFile читает все строки из файла
