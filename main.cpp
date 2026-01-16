@@ -48,3 +48,4 @@ void printToScreen(const std::vector<std::string>& lines) {
 void writeToFile(const std::vector<std::string>& lines, const std::string& filename) {
     // Заглушка
 }
+// Функция readFromFile читает все строки из файла
